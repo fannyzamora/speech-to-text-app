@@ -25,23 +25,26 @@
 }
 
 .micButton {
-  display: flex;              /* center the icon inside */
+  display: flex;              
   justify-content: center;
   align-items: center;
 
-  width: 100px;               /* fixed width */
-  height: 100px;              /* fixed height */
-  margin: 20px auto;          /* places it below the title and centers horizontally */
-  
+  width: 100px;               
+  height: 100px;              
+  margin: 20px auto;          
   background-color: #646cff;
-  border: none;               /* remove default border */
-  border-radius: 50%;         /* makes it perfectly round */
-  cursor: pointer;            /* pointer on hover */
+  border: none;               
+  border-radius: 50%;         
+  cursor: pointer;            
+}
+
+.micButton.active {
+  background-color: crimson;
 }
 
 .micIcon {
   font-size: 3rem;
-  color: white;               /* optional: makes the icon stand out */
+  color: white;               
 }
 
 .stateMessage {
@@ -84,11 +87,46 @@
   height: 4vw;
   margin: auto;
   font-size: 1rem;
+  cursor: pointer;
 }
 
-.copyButton button:active {
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  background-color:dimgrey;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  top: 100%;
+  left: 65%;
+  margin-left: -130px;
+  margin-top: 10px;
+  padding: 4px;
+}
+
+.tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent dimgrey transparent;
+}
+
+.copyButton:hover .tooltiptext {
+  visibility: visible;
 }
 
 @media (prefers-color-scheme: light) {

@@ -8,10 +8,13 @@ import CopyButton from "./components/CopyButton";
 function App() {
   const [recordingState, setRecordingState] = useState(false);
   const [transcript, setTranscript] = useState("Transcript will appear here");
+  const [tooltip, setTooltip] = useState("Click to copy text");
 
-  const copyToClipBoard = (transcript: string) => {
+  const copyToClipBoard = async (transcript: string) => {
     navigator.clipboard.writeText(transcript);
-    alert("Copied the text!");
+    setTooltip("Copied to clipboard!");
+    // To reset
+    setTimeout(() => setTooltip("Click to copy text"), 1000);
   };
 
   useEffect(() => {
@@ -24,10 +27,10 @@ function App() {
       console.error("Web Speech API not supported in this browser");
     }
 
-    // Set new object for SpeechRecognition, make it french
+    // Set new object for SpeechRecognition, make it english
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
-    recognition.lang = "fr";
+    recognition.lang = "en-US";
 
     // Start or stop recording based on recordingState (mic button)
     if (recordingState) {
@@ -53,12 +56,18 @@ function App() {
   return (
     <>
       <Title title="Transcription App" />
-      <MicButton onClick={() => setRecordingState((prev) => !prev)} />
+      <MicButton
+        onClick={() => setRecordingState((prev) => !prev)}
+        recordingState={recordingState}
+      />
       <StateMessage
         state={recordingState ? "Recording..." : "Ready to record"}
       />
       <Transcript transcript={transcript} />
-      <CopyButton onClick={() => copyToClipBoard(transcript)} />
+      <CopyButton
+        onClick={() => copyToClipBoard(transcript)}
+        tooltip={tooltip}
+      />
     </>
   );
 }
