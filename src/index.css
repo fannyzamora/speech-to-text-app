@@ -1,0 +1,105 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.appTitle {
+  width: 100vw;
+  margin-top: 0px;
+}
+
+.appTitle h1 {
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:xx-large;
+}
+
+.micButton {
+  display: flex;              /* center the icon inside */
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;               /* fixed width */
+  height: 100px;              /* fixed height */
+  margin: 20px auto;          /* places it below the title and centers horizontally */
+  
+  background-color: #646cff;
+  border: none;               /* remove default border */
+  border-radius: 50%;         /* makes it perfectly round */
+  cursor: pointer;            /* pointer on hover */
+}
+
+.micIcon {
+  font-size: 3rem;
+  color: white;               /* optional: makes the icon stand out */
+}
+
+.stateMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transcriptBox {
+  background-color:aliceblue;
+  border-style: dashed;
+  border-color:lightskyblue;
+  display: flex;
+  width: 60vw;
+  height: 30vw;
+  margin: auto;
+  padding : 5px;
+}
+
+.transcriptBox p {
+  font-size: medium;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left : 20px;
+  margin-right: 20px;
+}
+
+.copyButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.copyButton button {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 60vw;
+  height: 4vw;
+  margin: auto;
+  font-size: 1rem;
+}
+
+.copyButton button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
