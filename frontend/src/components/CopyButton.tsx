@@ -1,13 +1,14 @@
 interface Props {
   onClick: () => void;
   tooltip: string;
+  name: string;
 }
 
-const CopyButton = ({ onClick, tooltip }: Props) => {
+const CopyButton = ({ onClick, tooltip, name }: Props) => {
   return (
-    <div className="copyButton">
+    <div className="button">
       <div className="tooltip">
-        <button onClick={onClick}>Copy Text</button>
+        <button onClick={onClick}>{name}</button>
         <span className="tooltiptext">{tooltip}</span>
       </div>
     </div>

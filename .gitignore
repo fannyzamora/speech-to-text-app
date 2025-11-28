@@ -7,10 +7,29 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Frontend (React / Vite)
+frontend/node_modules
+frontend/dist
+frontend/dist-ssr
+frontend/.vite
+frontend/*.local
+
+# Backend (Python / FastAPI)
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.python-version
+backend/transcripts.db   # SQLite file if you generate one
+
+# Environnements virtuels
+venv/
+.env/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +41,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS / Misc
+Thumbs.db

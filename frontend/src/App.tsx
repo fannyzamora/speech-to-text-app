@@ -4,17 +4,41 @@ import Title from "./components/Title";
 import StateMessage from "./components/StateMessage";
 import Transcript from "./components/Transcript";
 import CopyButton from "./components/CopyButton";
+// import SaveButton from "./components/SaveButton";
 
 function App() {
   const [recordingState, setRecordingState] = useState(false);
   const [transcript, setTranscript] = useState("Transcript will appear here");
-  const [tooltip, setTooltip] = useState("Click to copy text");
+  const [tooltipCopy, setTooltipCopy] = useState("Click to copy text");
+  const [tooltipSave, setTooltipSave] = useState("Click to save text");
+  // const [saveStatus, setSaveStatus] = useState<"idle" | "success" | "error">(
+  //   "idle"
+  // );
 
   const copyToClipBoard = async (transcript: string) => {
     navigator.clipboard.writeText(transcript);
-    setTooltip("Copied to clipboard!");
+    setTooltipCopy("Copied to clipboard!");
     // To reset
-    setTimeout(() => setTooltip("Click to copy text"), 1000);
+    setTimeout(() => setTooltipCopy("Click to copy text"), 1000);
+  };
+
+  const saveTranscript = async (text: string) => {
+    const result = await fetch("http://127.0.0.1:8000/transcripts/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: text }),
+    });
+
+    if (result.ok) {
+      // setSaveStatus("success");
+      setTooltipSave("Saved!");
+    } else {
+      // setSaveStatus("error");
+      setTooltipSave("Failed to save...");
+    }
+
+    //setTimeout(() => setSaveStatus("idle"), 1000);
+    setTimeout(() => setTooltipSave("Click to save text"), 1000);
   };
 
   useEffect(() => {
@@ -30,7 +54,7 @@ function App() {
     // Set new object for SpeechRecognition, make it english
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
-    recognition.lang = "en-US";
+    recognition.lang = "fr";
 
     // Start or stop recording based on recordingState (mic button)
     if (recordingState) {
@@ -64,10 +88,25 @@ function App() {
         state={recordingState ? "Recording..." : "Ready to record"}
       />
       <Transcript transcript={transcript} />
-      <CopyButton
-        onClick={() => copyToClipBoard(transcript)}
-        tooltip={tooltip}
-      />
+      <div className="buttons">
+        <CopyButton
+          onClick={() => copyToClipBoard(transcript)}
+          tooltip={tooltipCopy}
+          name="Copy Text"
+        />
+        <CopyButton
+          onClick={() => saveTranscript(transcript)}
+          tooltip={tooltipSave}
+          name="Save Transcript"
+        />
+        {/* <SaveButton onClick={() => saveTranscript(transcript)} />
+        {saveStatus === "success" && (
+          <div className="feedback success">Saved!</div>
+        )}
+        {saveStatus === "error" && (
+          <div className="feedback error">Failed to save...</div>
+        )} */}
+      </div>
     </>
   );
 }

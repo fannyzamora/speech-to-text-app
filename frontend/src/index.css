@@ -24,6 +24,8 @@
   font-size:xx-large;
 }
 
+/* MIC ICON AND STATE MESSAGE */
+
 .micButton {
   display: flex;              
   justify-content: center;
@@ -53,15 +55,18 @@
   align-items: center;
 }
 
+/* TRANSCRIPT */
+
 .transcriptBox {
   background-color:aliceblue;
   border-style: dashed;
   border-color:lightskyblue;
   display: flex;
   width: 60vw;
-  height: 30vw;
+  height: 20vw;
   margin: auto;
   padding : 5px;
+  overflow-x: auto;
 }
 
 .transcriptBox p {
@@ -69,25 +74,36 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-left : 20px;
   margin-right: 20px;
+  
+  color: black;
 }
 
-.copyButton {
+/* COPY AND SAVE BUTTONS */
+
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 10px;
+  gap:20px;
+  margin-top: 20px;
 }
 
-.copyButton button {
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .saveButton, */
+.button button {
   background-color: #646cff;
   color: white;
   border: none;
   border-radius: 8px;
-  width: 60vw;
-  height: 4vw;
-  margin: auto;
+  padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .tooltip {
@@ -108,8 +124,8 @@
   z-index: 1;
   width: 150px;
   top: 100%;
-  left: 65%;
-  margin-left: -130px;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 10px;
   padding: 4px;
 }
@@ -125,9 +141,12 @@
   border-color: transparent transparent dimgrey transparent;
 }
 
-.copyButton:hover .tooltiptext {
+.button:hover .tooltiptext {
   visibility: visible;
 }
+
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
