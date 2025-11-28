@@ -92,7 +92,7 @@ function App() {
         <CopyButton
           onClick={() => copyToClipBoard(transcript)}
           tooltip={tooltipCopy}
-          name="Copy Text"
+          name="Copy Transcript"
         />
         <CopyButton
           onClick={() => saveTranscript(transcript)}
